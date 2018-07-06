@@ -2,11 +2,10 @@ package com.xingxunlei.test03;
 
 /**
  * 传统的线程安全问题
- *
+ * <p>
  * 1).无论synchronized关键字加在方法上还是对象上，如果它作用的对象是非静态的，则它取得的锁是对象；如果synchronized作用的对象是一个静态方法或一个类，则它取得的锁是对类，该类所有的对象同一把锁。
  * 2).每个对象只有一个锁（lock）与之相关联，谁拿到这个锁谁就可以运行它所控制的那段代码。
  * 3).实现同步是要很大的系统开销作为代价的，甚至可能造成死锁，所以尽量避免无谓的同步控制。比如，同步方法内再次同步代码块，可能会造成死锁。
- *
  */
 public class TraditionalThreadSynchronized {
 
@@ -19,7 +18,7 @@ public class TraditionalThreadSynchronized {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true) {
+                while (true) {
                     try {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
@@ -33,7 +32,7 @@ public class TraditionalThreadSynchronized {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true) {
+                while (true) {
                     try {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
@@ -52,6 +51,7 @@ public class TraditionalThreadSynchronized {
 
         /**
          * 非线程安全
+         *
          * @param s
          */
         public void output(String s) {
@@ -64,8 +64,9 @@ public class TraditionalThreadSynchronized {
 
         /**
          * 非线程安全
-         *
+         * <p>
          * 因为synchronized后边同步的并非同一个对象
+         *
          * @param s
          */
         public void output2(String s) {
@@ -80,6 +81,7 @@ public class TraditionalThreadSynchronized {
 
         /**
          * 可以达到线程同步的效果
+         *
          * @param s
          */
         public void output3(String s) {
@@ -97,8 +99,9 @@ public class TraditionalThreadSynchronized {
 
         /**
          * 可以达到线程同步的效果
-         *
+         * <p>
          * 但是 在使用synchronized 的时候，尽可能的同步少量的代码块，而非同步整个method
+         *
          * @param s
          */
         public synchronized void output4(String s) {
@@ -111,6 +114,7 @@ public class TraditionalThreadSynchronized {
 
         /**
          * 可以达到线程同步的效果
+         *
          * @param s
          */
         public void output5(String s) {
@@ -128,6 +132,7 @@ public class TraditionalThreadSynchronized {
 
         /**
          * 可以达到线程同步的效果
+         *
          * @param s
          */
         public static synchronized void output6(String s) {

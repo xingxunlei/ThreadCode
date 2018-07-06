@@ -1,5 +1,12 @@
 package com.xingxunlei.test04;
 
+/**
+ * 线程通信
+ * <p>
+ * 子线程循环10次，接着主线程循环100次，然后回到子线程循环10次，接着再回到主线程循环100次。如此往复50次。
+ * <p>
+ * wait、sleep区别：
+ */
 public class TraditionalThreadCommunication {
 
     public static void main(String[] args) {
@@ -23,8 +30,14 @@ public class TraditionalThreadCommunication {
     }
 }
 
+/**
+ * 业务类
+ * <p>
+ * 要用到共同数据（包括同步锁）的若干个方法应归集到同一个类中，这种设计正好体现高内聚的思想。
+ */
 class Business {
     private boolean bShouldSub = true;
+
     public synchronized void sub(int i) {
         while (!bShouldSub) {
             try {

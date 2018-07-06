@@ -6,12 +6,14 @@ import java.util.TimerTask;
 
 /**
  * 传统的定时器
+ * <p>
  * 1、Timer是jdk中提供的一个定时器工具，使用的时候会在主线程之外起一个单独的线程执行指定的计划任务，可以指定执行一次或者反复执行多次。
  * 2、TimerTask是一个实现了Runnable接口的抽象类，代表一个可以被Timer执行的任务。
  */
 public class TraditionalTimer {
 
     private static int count = 0;
+
     public static void main(String[] args) {
 //        new Timer().schedule(new TimerTask() {
 //            @Override
